@@ -20,5 +20,5 @@ sequelize
     console.error('Unable to connect to the database:', err);
     });
 
-sequelize.query(`SELECT existe_calle('santander');`)
-    .then(result => console.log(result));
+
+module.exports = sequelize;
