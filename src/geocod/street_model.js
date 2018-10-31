@@ -8,9 +8,8 @@ class Street {
 
     static async init(name) {
         const exists = await executeQuery(`SELECT existe_calle(?) AS result`, name);
-        console.log(exists);
         if (!exists) {
-            throw new Error('Street does not exists.');
+            throw new Error('street does not exists');
         }
 
         return new Street(name);
@@ -23,7 +22,7 @@ class Street {
             number
         );
         if (!coords) {
-            throw new Error('Street number does not exists.');
+            throw new Error('street number does not exists');
         }
 
         return coords;
@@ -35,7 +34,7 @@ async function streetFactory(streetName) {
         const street = await Street.init(streetName);
         return street;
     } catch (error) {
-        console.log(error);
+        throw error;
     }
 }
 
