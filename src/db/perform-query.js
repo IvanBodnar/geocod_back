@@ -1,11 +1,14 @@
 const sequelize = require('./connection');
 
+
 const executeQuery = async (query, ...args) => {
-    const s = await sequelize.query(query + ' AS resultado;', {
+    const s = await sequelize.query(query, {
         replacements: args,
         type: sequelize.QueryTypes.SELECT
     });
-    return s[0].resultado;
+    const result = s.map(element => element.result);
+
+    return result.length === 1 ? result[0] : result;
 };
 
 module.exports = executeQuery;
