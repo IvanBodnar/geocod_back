@@ -9,4 +9,4 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use('/', routes);
 
-app.listen(8080);
+app.listen(3000);
