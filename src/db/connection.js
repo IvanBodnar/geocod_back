@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize');
 
+// TODO use env variables
 const sequelize = new Sequelize(
     'geocoder_rest',
     'postgres',
     'postgres',
     {
-        host: 'localhost',
-        port: '5433',
+        host: 'db',
+        port: '5432',
         dialect: 'postgres'
     }
 );
