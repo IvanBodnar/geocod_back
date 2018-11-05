@@ -7,14 +7,14 @@ const streets = (req, res, next) => {
     const streets = getStreets();
     streets
         .then(streets => res.send(streets))
-        .catch(error => console.log(error));
+        .catch(error => res.status(404).send({ error: error.message }));
 };
 
 const street = (req, res, next) => {
     const street = streetFactory(req.params.name);
     street
         .then(street => res.send(street))
-        .catch(error => console.log(error));
+        .catch(error => res.status(404).send({ error: error.message }));
 };
 
 const intersection = async (req, res, next) => {
@@ -24,7 +24,7 @@ const intersection = async (req, res, next) => {
         const intersection = await getIntersection(street1.name, street2.name);
         res.send({ intersection: intersection });
     } catch (error) {
-        res.send({ error: error.message });
+        res.status(404).send({ error: error.message });
     }
 };
 
